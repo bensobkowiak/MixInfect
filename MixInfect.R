@@ -512,7 +512,7 @@ MixInfect<-function(InputVCF,ExcludedRegions.present=FALSE,ExcludedRegions,outpu
   
   ### Number of genes containing het SNPs
   
-  gene_coordinates<-read.csv(file="H37Rv_annotation_per_base.csv",header=T)
+  gene_coordinates<-read.csv(file="H37Rv_annotation_per_base.csv.gz",header=T)
   SNPs_genes<-as.data.frame(matrix(NA,nrow=nrow(proportions_alt_pos),ncol=3))
   colnames(SNPs_genes)<-c("SNP_coordinate","Gene","Overlap_gene")
   SNPs_genes[,1]<-proportions_alt_pos[,2]
