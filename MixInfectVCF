@@ -5,7 +5,7 @@
 #' @return new vcf files with mixed infections removed and mixed infection summary .csv file
 #' @export
 
-MixInfect = function(vcfInput,outputfile,LowCov=10){
+MixInfectVCF = function(vcfInput,outputfile,LowCov=10){
   
   if (!require(mclust)){
     install.packages("mclust")
