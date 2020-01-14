@@ -11,6 +11,10 @@ MixInfectVCF = function(vcfInput,outputfile,LowCov=10){
     install.packages("mclust")
     library("mclust")
   }
+    if (!require(stringr)){
+    install.packages("stringr")
+    library("stringr")
+  }
   
   vcf<-read.table(vcfInput)
   header_input<-as.matrix(read.table(vcfInput,comment.char=" ",sep="\n"))
@@ -27,7 +31,7 @@ MixInfectVCF = function(vcfInput,outputfile,LowCov=10){
   DP<-which(unlist(str_split(vcf[1,format], ":"))=='DP')
   
   #### Make new matrices of separared GT and AD fields
-  vcf_mat<-vcf[,10:ncol(vcf)]
+  vcf_mat<-as.data.frame(vcf[,10:ncol(vcf)])
   GT_mat<-matrix(0,nrow(vcf_mat),ncol(vcf_mat))
   AD_mat<-matrix(0,nrow(vcf_mat),ncol(vcf_mat))
   DP_mat<-matrix(0,nrow(vcf_mat),ncol(vcf_mat))
